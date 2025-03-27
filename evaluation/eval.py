@@ -245,18 +245,26 @@ def get_model_answers(
                 "tstamp": time.time(),
             }
             fout.write(json.dumps(ans_json) + "\n")
-    print("#Mean accepted tokens: ", np.mean(accept_lengths_tree))
+    
     # Compute the mean
     mean_accepted_tokens = np.mean(accept_lengths_tree)
+
+    print("#Mean accepted tokens: ", mean_accepted_tokens)
 
     # Prepare data
     data = {
         "mean_accepted_tokens": mean_accepted_tokens
     }
 
+    output_file = f"output-{model_id}.json"
+
+    output_file = output_file.replace('/', '-')
+
     # Write to JSON file
-    with open(f"output-{model_id}.json", "w") as f:
+    with open(output_file, "w") as f:
         json.dump(data, f, indent=2)
+
+    print(f"output saved to {output_file}")
 
 
 def reorg_answer_file(answer_file):
@@ -271,4 +279,3 @@ def reorg_answer_file(answer_file):
     with open(answer_file, "w") as fout:
         for qid in qids:
             fout.write(answers[qid])
-
