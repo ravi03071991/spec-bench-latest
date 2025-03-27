@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 ## Parameters
 
-You need to set following parameters before running the script based on your experiment setup:
+You need to set following parameters before running the `eval.sh` script based on your experiment setup:
 
 | Variable         | Description                          | Example                  |
 |------------------|--------------------------------------|--------------------------|
