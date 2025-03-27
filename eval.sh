@@ -1,5 +1,5 @@
-verifier_path= "lmsys/vicuna-7b-v1.3"
-drafter_path= "double7/vicuna-68m"
+verifier_path="lmsys/vicuna-7b-v1.3"
+drafter_path="double7/vicuna-68m"
 
 TEMP=0.0
 GPU_DEVICES=0
