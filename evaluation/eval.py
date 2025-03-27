@@ -256,16 +256,17 @@ def get_model_answers(
         "mean_accepted_tokens": mean_accepted_tokens
     }
 
-    output_file = f"output-{model_id}.json"
-
-    output_file = output_file.replace('/', '-')
-
-    # Write to JSON file
-    with open(output_file, "w") as f:
+    # Sanitize and construct output path
+    output_file = f"{model_id}.json".replace('/', '-')
+    output_file = f"output/{output_file}"
+    
+    # Ensure the output directory exists
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    
+    with open(output_file, 'w') as f:
         json.dump(data, f, indent=2)
-
-    print(f"output saved to {output_file}")
-
+    
+    print(f"Output will be saved to: {output_file}")
 
 def reorg_answer_file(answer_file):
     """Sort by question id and de-duplication"""
